@@ -58,15 +58,16 @@
   when:
     - ansible_virtualization_type != "docker"
 
-- name: set password for artifactory for version 6.8.0 and above
-  uri:
-    url: "https://localhost:8081/access/api/v1/users/admin"
-    user: access-admin
-    password: password
-    method: PATCH
-    body:
-      password: "{{ artifactory_password }}"
-    status_code: 201
-    body_format: json
-  when:
-    - artifactory_version is version('6.8.0', '>=')
+# Doesn't work. Just default to standard password.
+#- name: set password for artifactory for version 6.8.0 and above
+#  uri:
+#    url: "https://localhost:8081/access/api/v1/users/admin"
+#    user: access-admin
+#    password: password
+#    method: PATCH
+#    body:
+#      password: "{{ artifactory_password }}"
+#    status_code: 201
+#    body_format: json
+#  when:
+#    - artifactory_version is version('6.8.0', '>=')
